@@ -203,25 +203,13 @@ The system handles 200+ guests with automatic duplicate prevention, meal prefere
    ADMIN_PASSCODE=your-admin-backup-passcode
    ```
 
-4. **Create admin user**
-
-   ```bash
-   npm run create-admin
-   ```
-
-   Default credentials:
-   - Username: `admin`
-   - Password: `cepstrum2026`
-
-   ⚠️ **Change the password after first login!**
-
-5. **Run the development server**
+4. **Run the development server**
 
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:3000`
 
 ---
@@ -259,8 +247,6 @@ cepstrum-dining/
 ├── models/
 │   ├── Admin.js                    # Admin schema
 │   └── Guest.js                    # Guest schema
-├── scripts/
-│   └── create-admin.js             # Admin user creation script
 ├── middleware.js                   # Route protection middleware
 ├── .env                           # Environment variables (not in git)
 ├── package.json

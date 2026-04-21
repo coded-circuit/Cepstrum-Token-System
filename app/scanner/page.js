@@ -129,7 +129,19 @@ export default function Scanner() {
       if (data.success) {
         setShowFoodSelector(false);
         setGuestData({ ...guestData, foodPreference: preference });
-        setTimeout(resetScanner, 3000);
+        setCountdown(20);
+        
+        // Start 20-second countdown after food selection
+        if (countdownRef.current) clearInterval(countdownRef.current);
+        countdownRef.current = setInterval(() => {
+          setCountdown(prev => {
+            if (prev <= 1) {
+              resetScanner();
+              return 20;
+            }
+            return prev - 1;
+          });
+        }, 1000);
       } else {
         alert('SYSTEM ERROR: Failed to save preference.');
       }

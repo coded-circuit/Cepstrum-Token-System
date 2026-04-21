@@ -73,18 +73,20 @@ export default function Scanner() {
           setScanState('success');
           setGuestData(data.guest);
           setShowFoodSelector(true);
+          // NO TIMER - waiting for food selection
         } else if (data.success) {
           setScanState('success');
           setGuestData(data.guest);
           setShowFoodSelector(false);
-          setCountdown(20);
+          setCountdown(15);
           
-          // Start countdown
+          // Start 15-second countdown
+          if (countdownRef.current) clearInterval(countdownRef.current);
           countdownRef.current = setInterval(() => {
             setCountdown(prev => {
               if (prev <= 1) {
                 resetScanner();
-                return 20;
+                return 15;
               }
               return prev - 1;
             });
@@ -129,15 +131,15 @@ export default function Scanner() {
       if (data.success) {
         setShowFoodSelector(false);
         setGuestData({ ...guestData, foodPreference: preference });
-        setCountdown(20);
+        setCountdown(15);
         
-        // Start 20-second countdown after food selection
+        // Start 15-second countdown AFTER food selection
         if (countdownRef.current) clearInterval(countdownRef.current);
         countdownRef.current = setInterval(() => {
           setCountdown(prev => {
             if (prev <= 1) {
               resetScanner();
-              return 20;
+              return 15;
             }
             return prev - 1;
           });

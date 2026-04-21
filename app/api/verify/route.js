@@ -9,7 +9,7 @@ export async function POST(req) {
     const { id, timestamp, signature } = await req.json();
 
     // 1. Check timestamp to prevent screenshot sharing (30-second window)
-    if (Date.now() - timestamp > 30000) {
+    if (Date.now() - timestamp > 15000) {
       return NextResponse.json({ success: false, message: 'QR Code Expired. Ask guest to refresh.' });
     }
 

@@ -109,7 +109,7 @@ export default function GuestPass() {
       const timestamp = Date.now();
       const signature = CryptoJS.HmacSHA256(timestamp.toString(), guest.secretKey).toString(CryptoJS.enc.Hex);
       setQrData(JSON.stringify({ id: guest._id, timestamp, signature }));
-      setTimer(30);
+      setTimer(15);
     };
 
     generateCode();
